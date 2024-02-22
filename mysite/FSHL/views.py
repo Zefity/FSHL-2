@@ -20,7 +20,9 @@ def products(request, category_id=None, page_num=1):
         'title': 'Store - Каталог',
         'categories': Category.objects.all(),
         'products': things_paginator,
+        'current_category_id': category_id,
     }
+
     return render(request, 'FSHL/products.html', context)
 
 
