@@ -10,6 +10,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('FSHL/', include('FSHL.urls', namespace='products')),
     path('users/', include('users.urls', namespace='users')),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
 
 if settings.DEBUG:

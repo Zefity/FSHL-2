@@ -1,1 +1,0 @@
-[{"model": "FSHL.category", "pk": 1, "fields": {"name": "Одежда", "slug": "odejda", "parent": null, "lft": 1, "rght": 2, "tree_id": 3, "level": 0}}, {"model": "FSHL.category", "pk": 2, "fields": {"name": "Аксессуары", "slug": "acessuares", "parent": null, "lft": 1, "rght": 2, "tree_id": 1, "level": 0}}]
