@@ -3,9 +3,8 @@ FROM python:3.10.4
 WORKDIR /app
 COPY . /app/
 
-RUN pip install -r requirements.txt
+COPY requirements.txt ./
 
-RUN ["python", "manage.py", "migrate"] \
-    && ["python", "manage.py", "loaddata", "categories.json"] \
-    && ["python", "manage.py", "loaddata", "things.json"]  \
-    && ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+RUN apt-get update && apt-get install -y python3 && pip install -r requirements.txt
+
+CMD ["bash", "-c", "python manage.py migrate && python manage.py loaddata categories.json && python manage.py runserver 0.0.0.0:8000"]

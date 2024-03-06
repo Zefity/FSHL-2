@@ -1,15 +1,6 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:latest
-    container_name: postgres
-    environment:
-      POSTGRES_USER: Zefity
-      POSTGRES_PASSWORD: 5332Dialog
-      POSTGRES_DB: site
-    ports:
-      - "5432:5432"
   prediction:
     build:
       context: ./mysite
@@ -19,8 +10,17 @@ services:
       - postgres
     environment:
       DEBUG: "False"
-      DB_NAME: "site"
-      DB_USER: "Zefity"
+      DB_NAME: "postgres"
+      DB_USER: "postgres"
       DB_PASSWORD: "5332Dialog"
       DB_HOST: "postgres"
-      DB_PORT: 5432
+      DB_PORT:
+  postgres:
+    restart: always
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 5332Dialog
+      POSTGRES_DB: postgres
+    ports:
+      - "6423:5432"
